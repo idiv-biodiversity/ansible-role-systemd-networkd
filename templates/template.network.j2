@@ -1,0 +1,21 @@
+{% if item.match is defined %}
+[Match]
+{% if item.match.name is defined %}
+Name={{ item.match.name }}
+{% endif %}
+{% endif %}
+
+{% if item.network is defined %}
+[Network]
+{% if item.network.dhcp is defined %}
+DHCP={{ item.network.dhcp }}
+{% endif %}
+{% if item.network.domains is defined %}
+Domains={{ item.network.domains | join(" ") }}
+{% endif %}
+{% if item.network.ntp is defined %}
+{% for address in item.network.ntp %}
+NTP={{ address }}
+{% endfor %}
+{% endif %}
+{% endif %}

@@ -37,6 +37,7 @@ systemd_networkd_networks:
       name: en*
     network:
       dhcp: ipv4
+      llmnr: 'no'
       domains:
         - example.com
       ntp:

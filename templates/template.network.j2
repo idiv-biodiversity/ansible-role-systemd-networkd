@@ -18,4 +18,7 @@ Domains={{ item.network.domains | join(" ") }}
 NTP={{ address }}
 {% endfor %}
 {% endif %}
+{% if item.network.llmnr is defined %}
+LLMNR={{ item.network.llmnr }}
+{% endif %}
 {% endif %}

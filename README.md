@@ -45,6 +45,8 @@ systemd_networkd_networks:
         - 2.pool.example.com
         - 3.pool.example.com
         - 4.pool.example.com
+    dhcp:
+      route_metric: 10
 ```
 
 For more information, read `man 5 systemd.network`.

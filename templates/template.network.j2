@@ -22,3 +22,10 @@ NTP={{ address }}
 LLMNR={{ item.network.llmnr }}
 {% endif %}
 {% endif %}
+
+{% if item.dhcp is defined %}
+[DHCP]
+{% if item.dhcp.route_metric is defined %}
+RouteMetric={{ item.dhcp.route_metric }}
+{% endif %}
+{% endif %}

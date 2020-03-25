@@ -14,16 +14,10 @@
   loop: '{{ systemd_networkd_networks }}'
   loop_control:
     label: '{{ item.name }}'
-  register: systemd_networkd_configuration
+  notify: restart systemd-networkd
   tags:
     - configuration
     - systemd-networkd-configuration
-
-- name: restart systemd-networkd
-  systemd:
-    name: systemd-networkd
-    state: restarted
-  when: systemd_networkd_configuration.changed
 
 - name: enable systemd-networkd service and assure it is started
   systemd:

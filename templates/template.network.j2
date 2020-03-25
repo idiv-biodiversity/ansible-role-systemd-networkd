@@ -16,6 +16,11 @@ Gateway={{ item.network.gateway }}
 {% if item.network.dhcp is defined %}
 DHCP={{ item.network.dhcp }}
 {% endif %}
+{% if item.network.dns is defined %}
+{% for address in item.network.dns %}
+DNS={{ address }}
+{% endfor %}
+{% endif %}
 {% if item.network.domains is defined %}
 Domains={{ item.network.domains | join(" ") }}
 {% endif %}

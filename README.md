@@ -31,22 +31,39 @@ Role Variables
 something, pull requests are welcome!
 
 ```yml
+# host_vars/my-client/vars.yml
+---
+
 systemd_networkd_networks:
-  - name: wired
+
+  - name: 20-wired-static
     match:
       name: en*
     network:
-      dhcp: ipv4
-      llmnr: 'no'
+      address: a.b.c.d/24
+      gateway: a.b.c.x
+      dns:
+        - a.b.c.y
+        - a.b.c.z
       domains:
         - example.com
+      llmnr: 'no'
+      multicast_dns: no
       ntp:
-        - 1.pool.example.com
-        - 2.pool.example.com
-        - 3.pool.example.com
-        - 4.pool.example.com
+        - 1.ntp.example.com
+        - 2.ntp.example.com
+        - 3.ntp.example.com
+        - 4.ntp.example.com
+
+  - name: 50-wireless
+    match:
+      name: w*
+    network:
+      dhcp: ipv4
     dhcp:
-      route_metric: 10
+      route_metric: 20
+
+...
 ```
 
 For more information, read `man 5 systemd.network`.

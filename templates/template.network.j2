@@ -7,6 +7,12 @@ Name={{ item.match.name }}
 
 {% if item.network is defined %}
 [Network]
+{% if item.network.address is defined %}
+Address={{ item.network.address }}
+{% endif %}
+{% if item.network.gateway is defined %}
+Gateway={{ item.network.gateway }}
+{% endif %}
 {% if item.network.dhcp is defined %}
 DHCP={{ item.network.dhcp }}
 {% endif %}

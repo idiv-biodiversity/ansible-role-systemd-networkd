@@ -24,13 +24,16 @@ DNS={{ address }}
 {% if item.network.domains is defined %}
 Domains={{ item.network.domains | join(" ") }}
 {% endif %}
+{% if item.network.llmnr is defined %}
+LLMNR={{ item.network.llmnr }}
+{% endif %}
+{% if item.network.multicast_dns is defined %}
+MulticastDNS={{ item.network.multicast_dns }}
+{% endif %}
 {% if item.network.ntp is defined %}
 {% for address in item.network.ntp %}
 NTP={{ address }}
 {% endfor %}
-{% endif %}
-{% if item.network.llmnr is defined %}
-LLMNR={{ item.network.llmnr }}
 {% endif %}
 {% endif %}
 

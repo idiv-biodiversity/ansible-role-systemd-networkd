@@ -1,9 +1,8 @@
 ---
 
 - name: install systemd
-  pacman:
+  package:
     name: systemd
-    state: present
 
 - name: install networks
   template:

@@ -4,7 +4,7 @@
   package:
     name: systemd
 
-- name: install networks
+- name: deploy network configuration files
   template:
     src: template.network.j2
     dest: '/etc/systemd/network/{{ item.name }}.network'
@@ -15,6 +15,9 @@
   loop_control:
     label: '{{ item.name }}'
   register: systemd_networkd_configuration
+  tags:
+    - configuration
+    - systemd-networkd-configuration
 
 - name: restart systemd-networkd
   systemd:
@@ -27,5 +30,7 @@
     name: systemd-networkd
     enabled: yes
     state: started
+  tags:
+    - service
 
 ...

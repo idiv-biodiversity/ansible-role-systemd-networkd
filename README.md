@@ -60,6 +60,7 @@ systemd_networkd_networks:
       name: w*
     network:
       dhcp: ipv4
+      link_local_addressing: ipv4
     dhcp:
       route_metric: 20
 

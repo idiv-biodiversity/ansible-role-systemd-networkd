@@ -16,6 +16,9 @@ Gateway={{ item.network.gateway }}
 {% if item.network.dhcp is defined %}
 DHCP={{ item.network.dhcp }}
 {% endif %}
+{% if item.network.link_local_addressing is defined %}
+LinkLocalAddressing={{ item.network.link_local_addressing }}
+{% endif %}
 {% if item.network.dns is defined %}
 {% for address in item.network.dns %}
 DNS={{ address }}

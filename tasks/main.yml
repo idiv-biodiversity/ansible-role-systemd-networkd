@@ -1,11 +1,11 @@
 ---
 
 - name: install systemd
-  package:
+  ansible.builtin.package:
     name: systemd
 
 - name: deploy network configuration files
-  template:
+  ansible.builtin.template:
     src: template.network.j2
     dest: '/etc/systemd/network/{{ item.name }}.network'
     owner: root
@@ -20,7 +20,7 @@
     - systemd-networkd-configuration
 
 - name: enable systemd-networkd service and assure it is started
-  systemd:
+  ansible.builtin.systemd:
     name: systemd-networkd
     enabled: yes
     state: started

@@ -82,7 +82,7 @@ Add to `requirements.yml`:
 ```yml
 ---
 
-- src: idiv-biodiversity.systemd_networkd
+- name: idiv_biodiversity.systemd_networkd
 
 ...
 ```
@@ -104,7 +104,7 @@ Write a top-level playbook:
   hosts: head
 
   roles:
-    - role: idiv-biodiversity.systemd_networkd
+    - role: idiv_biodiversity.systemd_networkd
       tags:
         - systemd
         - systemd-networkd
@@ -121,7 +121,7 @@ Define the role dependency in `meta/main.yml`:
 
 dependencies:
 
-  - role: idiv-biodiversity.systemd_networkd
+  - role: idiv_biodiversity.systemd_networkd
     tags:
       - systemd
       - systemd-networkd

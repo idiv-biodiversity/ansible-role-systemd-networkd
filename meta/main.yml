@@ -4,6 +4,8 @@ dependencies: []
 
 galaxy_info:
   role_name: systemd_networkd
+  namespace: idiv_biodiversity
+
   author: Christian Krause
   description: 'install and configure systemd-networkd'
   company: German Centre for Integrative Biodiversity Research (iDiv)

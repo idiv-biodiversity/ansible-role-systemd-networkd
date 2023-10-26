@@ -3,6 +3,7 @@
 - name: install systemd
   ansible.builtin.package:
     name: systemd
+  become: yes
 
 - name: deploy network configuration files
   ansible.builtin.template:
@@ -14,6 +15,7 @@
   loop: '{{ systemd_networkd_networks }}'
   loop_control:
     label: '{{ item.name }}'
+  become: yes
   notify: restart systemd-networkd
   tags:
     - configuration
@@ -24,6 +26,7 @@
     name: systemd-networkd
     enabled: yes
     state: started
+  become: yes
   tags:
     - service
 

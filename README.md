@@ -82,7 +82,11 @@ Add to `requirements.yml`:
 ```yml
 ---
 
-- name: idiv_biodiversity.systemd_networkd
+roles:
+
+  - name: idiv_biodiversity.systemd_networkd
+    src: https://github.com/idiv-biodiversity/ansible-role-systemd-networkd
+    version: v0.5.0
 
 ...
 ```

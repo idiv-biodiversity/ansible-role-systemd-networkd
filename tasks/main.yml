@@ -16,16 +16,28 @@
   loop_control:
     label: '{{ item.name }}'
   become: yes
-  notify: restart systemd-networkd
+  register: __systemd_networkd_configuration
   tags:
     - configuration
     - systemd-networkd-configuration
 
-- name: enable systemd-networkd service and assure it is started
+- name: start systemd-networkd service
+  ansible.builtin.systemd:
+    name: systemd-networkd
+    state: >-
+      {{
+        __systemd_networkd_configuration.changed |
+          default(False) |
+          ternary("restarted", "started")
+      }}
+  become: yes
+  tags:
+    - service
+
+- name: enable systemd-networkd service
   ansible.builtin.systemd:
     name: systemd-networkd
     enabled: yes
-    state: started
   become: yes
   tags:
     - service

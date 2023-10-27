@@ -26,6 +26,7 @@
       ansible.builtin.service:
         name: systemd-networkd
         enabled: yes
+        state: started
       check_mode: yes
       register: __systemd_networkd_service
 
@@ -38,8 +39,9 @@
         that:
           - not __systemd_networkd_service.failed
           - not __systemd_networkd_service.changed
+          - __systemd_networkd_service.state == 'started'
           - __systemd_networkd_service.enabled
-        success_msg: 'service is enabled'
+        success_msg: 'service is both enabled and started'
 
     - name: 'check if `networkctl list` works'
       ansible.builtin.command: networkctl list
